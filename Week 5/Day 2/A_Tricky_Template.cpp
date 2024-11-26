@@ -7,39 +7,39 @@ bool isMatching(const string &s, const string &t)
     for (int i = 0; i < s.length(); i++)
     {
         if (islower(t[i]) && s[i] != t[i])
-            return false; // Exact match required
+            return false; 
         if (isupper(t[i]) && s[i] == tolower(t[i]))
-            return false; // Should not match lowercase
+            return false; 
     }
     return true;
 }
 
 int main()
 {
-    int t; // Number of test cases
+    int t; 
     cin >> t;
 
     while (t--)
     {
-        int n; // Length of strings
+        int n; 
         cin >> n;
 
         string a, b, c;
         cin >> a >> b >> c;
 
-        string templateStr(n, ' '); // Template to be constructed
+        string templateStr(n, ' '); 
         bool possible = true;
 
         for (int i = 0; i < n; i++)
         {
             if (a[i] == b[i])
             {
-                // Both match this character exactly
+                
                 templateStr[i] = a[i];
             }
             else if (a[i] != b[i])
             {
-                // Choose a character that excludes `c[i]`
+                
                 if (c[i] == a[i])
                 {
                     templateStr[i] = toupper(b[i]);
@@ -50,9 +50,9 @@ int main()
                 }
             }
 
-            // Check if `c` matches `templateStr` so far
+            
             if (islower(templateStr[i]) && c[i] != templateStr[i])
-                continue; // Valid case
+                continue; 
             if (isupper(templateStr[i]) && c[i] == tolower(templateStr[i]))
             {
                 possible = false;
